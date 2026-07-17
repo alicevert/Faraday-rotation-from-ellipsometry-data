@@ -1,0 +1,6 @@
+numpy as
+pandas
+matplotlib.pyplot
+openpyxl
+openpyxl.styles
+openpyxl.drawing.image
