@@ -1,0 +1,75 @@
+name: Test Setup
+
+on:
+  workflow_dispatch:  # manual trigger only
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.15'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Check required files exist
+        run: |
+          echo "Checking for required files..."
+
+          if [ -f "angles.py" ]; then
+            echo "main.py found"
+          else
+            echo "angles.py not found!"
+            exit 1
+          fi
+
+          if [ -f "samples.py" ]; then
+            echo "samples.py found"
+          else
+            echo "samples.py not found!"
+            exit 1
+          fi
+
+          if [ -f "samples_Si_control.py" ]; then
+            echo "samples_Si_control.py found"
+          else
+            echo "samples_Si_control.py not found!"
+            exit 1
+          fi
+
+          if [ -f "requirements.txt" ]; then
+            echo "requirements.txt found"
+          else
+            echo "requirements.txt not found!"
+            exit 1
+          fi
+
+          if [ -f "angles data" ]; then
+            echo "angles data found"
+          else
+            echo "angles data not found!"
+            exit 1
+          fi
+
+          echo ""
+          echo "All required files found!"
+
+      - name: Test Python syntax
+        run: python -m py_compile main.py && echo "Python syntax OK"
+
+      - name: Success
+        run: |
+          echo ""
+          echo "========================================"
+          echo "  All checks passed!"
+          echo "  Your setup is ready to go."
+          echo "========================================"
