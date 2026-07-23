@@ -13,7 +13,7 @@ from openpyxl.drawing.image import Image
 # SETTINGS
 # ============================================================
 
-DATA_FOLDER = "samples data"
+DATA_FOLDER = "samples-data"
 OUTPUT_FILE = "samples.xlsx"
 PLOT_FILE = "samples_plot.png"
 PLOT_2_FILE = "samples_plot_2.png"
