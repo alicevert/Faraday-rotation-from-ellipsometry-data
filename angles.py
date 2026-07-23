@@ -14,7 +14,7 @@ from openpyxl.drawing.image import Image
 # SETTINGS
 # ============================================================
 
-DATA_FOLDER = "angles data"
+DATA_FOLDER = "angles-data"
 OUTPUT_EXCEL = "angles.xlsx"
 PLOT_FILE = "angles.png"
 PLOT_2_FILE = "angles_2.0.png"
